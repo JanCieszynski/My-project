@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Playercontroler : MonoBehaviour
 {
+    Rigidbody rb;
     public float moveSpeed = 5f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //transform.position += new Vector3(1, 0, 0) * Time.deltaTime;
         float x = Input.GetAxis("Horizontal");
@@ -24,6 +25,13 @@ public class Playercontroler : MonoBehaviour
         movement *= Time.deltaTime;
         movement *= moveSpeed;
         transform.position += movement;
-     
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+    void Jump()
+    {
+        rb.AddForce(Vector3.up, ForceMode.Impulse);
     }
 }
