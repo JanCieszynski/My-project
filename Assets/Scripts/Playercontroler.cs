@@ -5,6 +5,7 @@ using UnityEngine;
 public class Playercontroler : MonoBehaviour
 {
     Rigidbody rb;
+    public float jumpForce = 5f;
     public float moveSpeed = 5f;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,11 @@ public class Playercontroler : MonoBehaviour
         movement = movement.normalized;
         movement *= Time.deltaTime;
         movement *= moveSpeed;
-        transform.position += movement;
+        //transform.position += movement;
+        transform.Translate(movement);
+    }
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
@@ -32,6 +37,12 @@ public class Playercontroler : MonoBehaviour
     }
     void Jump()
     {
-        rb.AddForce(Vector3.up, ForceMode.Impulse);
+        //sprawdz czy znajduje siê na poziomie 0
+        if (transform.position.y <= Mathf.Epsilon)
+        {
+            //dodaj si³ê skoku
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
     }
 }
