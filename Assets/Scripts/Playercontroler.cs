@@ -43,6 +43,9 @@ public class Playercontroler : MonoBehaviour
             //dodaj si³ê skoku
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-        
+    void OnTriggerEnter(Collider other)
+    {
+            Debug.Log("Nara");
     }
+}
 }
