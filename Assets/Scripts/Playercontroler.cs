@@ -18,7 +18,7 @@ public class Playercontroler : MonoBehaviour
     {
         //transform.position += new Vector3(1, 0, 0) * Time.deltaTime;
         float x = Input.GetAxis("Horizontal");
-        Debug.Log(x);
+        //Debug.Log(x);
         Vector3 movement = Vector3.right * x  ;
         float y = Input.GetAxis("Vertical");
         movement += Vector3.forward * y  ;
@@ -46,7 +46,7 @@ public class Playercontroler : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-            Debug.Log("Nara");
+            Debug.Log("Arrivederci");
     }
 
 }
